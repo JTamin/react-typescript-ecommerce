@@ -12,7 +12,7 @@ const NavBar = () => {
                     <Link to='/' className="nav-breadcrumbs-link">
                         Home
                     </Link>
-                    <Link to='/about' className="nav-breadcrumbs-link">about</Link>
+                    <Link to='/Cart' className="nav-breadcrumbs-link">Cart</Link>
                 </div>
                 <div className="nav-auth-link">
                     <Link to='/Auth' className="nav-btn-link">Sign In</Link>
