@@ -1,65 +1,36 @@
-import { useEffect, useState } from 'react'
 import '../App.css'
+import ProductCard from '../components/ProductCard'
+import { useFetch } from '../hooks/useFetch'
 type Product = {
     id: number,
     title: string,
     price: number,
     images: string[]
-
 }
 type ProductResponse = {
     products: Product[]
 }
 
-
-
 const Home = () => {
 
-    const [products, setProducts] = useState<Product[]>([])
+    const { data, error, loading } = useFetch<ProductResponse>('https://dummyjson.com/products')
 
-    useEffect(() => {
-        async function fetchproduct() {
-            try {
-                const res = await fetch('https://dummyjson.com/products');
-
-                if (!res.ok) {
-                    return new Error('res is not ok');
-                }
-
-                const data: ProductResponse = await res.json();
-
-
-                setProducts(data.products);
-            } catch (error) {
-                console.log(error)
-            }
-        }
-        fetchproduct()
-    }, [])
-
-
+    if (error) return <h1>Error</h1>
 
     return (
         <div>
-            <h1 className='home-hero'>Premium Products at Budget Prices</h1>
-            {products &&
-                <div className="product-container">
-                    {products.map(item => (
-                        <div key={item.id} className='product-card'>
-                            <div className='product-image-container'>
-                                <img src={item.images?.[0]} className='product-image' />
-                            </div>
-                            <div>
-                                {item.title}
-                            </div>
-                            <div>
-                                {item.price}
-                            </div>
-                            <div>
-                                <button>add to cart</button>
-                            </div>
+            <h1 className='home-hero-title'>Premium Products at Budget Prices</h1>
+            <h2 className='home-hero-subtitle'>Experience high-quality products without the premium price tag</h2>
+            {data &&
+                <div>
+                    <h1 className='products-title'>Products</h1>
+                    {loading ? <h1>loading...</h1> :
+                        <div className="product-container">
+                            {data.products.map(item => (
+                                <ProductCard key={item.id} item={item} />
+                            ))}
                         </div>
-                    ))}
+                    }
                 </div>
             }
         </div>
