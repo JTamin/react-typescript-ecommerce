@@ -15,6 +15,7 @@ const Home = () => {
 
     const { data, error, loading } = useFetch<ProductResponse>('https://dummyjson.com/products')
 
+    if (loading) return <h1>Loading...</h1>
     if (error) return <h1>Error</h1>
 
     return (
@@ -24,13 +25,11 @@ const Home = () => {
             {data &&
                 <div>
                     <h1 className='products-title'>Products</h1>
-                    {loading ? <h1>loading...</h1> :
-                        <div className="product-container">
-                            {data.products.map(item => (
-                                <ProductCard key={item.id} item={item} />
-                            ))}
-                        </div>
-                    }
+                    <div className="product-container">
+                        {data.products.map(item => (
+                            <ProductCard key={item.id} item={item} />
+                        ))}
+                    </div>
                 </div>
             }
         </div>

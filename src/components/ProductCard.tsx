@@ -12,7 +12,6 @@ type ProductCardProps = {
     item: Product
 }
 
-
 const ProductCard = ({ item }: ProductCardProps) => {
     const { add, itemQuantity, totalCart } = useCartContext();
 
@@ -20,7 +19,6 @@ const ProductCard = ({ item }: ProductCardProps) => {
         e.preventDefault();
         add(item);
     }
-    console.log(totalCart())
     return (
 
         <div key={item?.id} className='product-card'>

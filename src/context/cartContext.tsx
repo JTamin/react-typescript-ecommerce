@@ -23,6 +23,7 @@ type CartContextType = {
     deleteItem: (id: number) => void,
     itemQuantity: (id: number) => number,
     totalCart: () => number,
+    itemTotalPrice: (id: number) => number,
 
 }
 
@@ -36,7 +37,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
 
     useEffect(() => {
         localStorage.setItem("cart", JSON.stringify(cart));
-        // console.log(cart)
+        console.log(itemTotalPrice(1))
     }, [cart])
 
 
@@ -77,12 +78,17 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         return cart.find(item => item.id === id)?.quantity ?? 0;
     }
     const totalCart = () => {
-        const cartT = cart.reduce((curr, total) => curr + total.price * total.quantity, 0)
-        return cartT
+        const total = cart.reduce((curr, total) => curr + total.price * total.quantity, 0)
+        return Number(total.toFixed(2))
+    }
+    const itemTotalPrice = (id: number) => {
+        const total = cart.filter(item => item.id === id).reduce((curr, total) => curr + total.price * total.quantity, 0);
+        return Number(total.toFixed(2))
+
     }
 
     return (
-        <CartContext.Provider value={{ cart, add, increase, decrease, deleteItem, itemQuantity, totalCart }}>
+        <CartContext.Provider value={{ cart, add, increase, decrease, deleteItem, itemQuantity, totalCart, itemTotalPrice }}>
             {children}
         </CartContext.Provider>
     )
