@@ -70,7 +70,6 @@
 }
 .product-card {
   width: 25vw;
-  height: 10vw;
   margin: 1vw;
   box-shadow: 2px 3px 11px 8px rgba(0, 0, 0, 0.34);
   display: flex;
