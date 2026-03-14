@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { useCartContext } from "../context/cartContext"
 import { type MouseEvent } from "react"
 
@@ -28,7 +29,9 @@ const ProductCard = ({ item }: ProductCardProps) => {
             <p className='product-price'>${item?.price}</p>
             <div className='product-cta-container'>
                 <div>
-                    <a href={`product-details/${item.id}`}>View Details</a>
+                    <Link to={`/product-details/${item.id}`}>
+                        View Details
+                    </Link>
                 </div>
                 <div>
                     <button className='add-cart-btn' onClick={handleAdd}>{`add to cart ${itemQuantity(item.id) !== 0 ? ` (${itemQuantity(item.id)})` : ' '}`}
