@@ -1,6 +1,5 @@
 import { useParams } from "react-router";
 import { useCartContext } from "../context/cartContext";
-import { useEffect, useState } from "react";
 import { useFetch } from "../hooks/useFetch";
 import '../App.css'
 type Product = {

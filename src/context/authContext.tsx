@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, type Dispatch, type SetStateAction } from "react";
+import { createContext, useContext, useState } from "react";
 
 type AuhProviderProps = {
     children: React.ReactNode,
