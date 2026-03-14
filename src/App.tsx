@@ -1,15 +1,13 @@
-import { Route, Routes } from 'react-router'
+import { Route, Routes, useLocation } from 'react-router'
 import './App.css'
-import { Cart, Auth, Home } from './pages'
+import { Cart, Auth, Home, ProductDetails } from './pages'
 import NavBar from './components/NavBar'
-import ProductDetails from './pages/ProductDetails'
-
-
 function App() {
-
+  const location = useLocation();
   return (
     <>
-      <NavBar />
+
+      {location.pathname !== "/Auth" && <NavBar />}
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/Cart' element={<Cart />} />

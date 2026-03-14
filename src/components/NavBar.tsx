@@ -1,7 +1,19 @@
 import { Link } from "react-router"
 import '../App.css'
-
+import { authContext } from "../context/authContext";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"
 const NavBar = () => {
+    const { currentUser, logout } = authContext();
+    const navigate = useNavigate()
+
+    let isLoggedIn = !!currentUser
+    useEffect(() => {
+        if (isLoggedIn) {
+            navigate("/")
+        }
+    }, [isLoggedIn])
+
     return (
         <div>
             <nav className="nav-container">
@@ -15,8 +27,13 @@ const NavBar = () => {
                     <Link to='/Cart' className="nav-breadcrumbs-link">Cart</Link>
                 </div>
                 <div className="nav-auth-link">
-                    <Link to='/Auth' className="nav-btn-link">Sign In</Link>
-
+                    {isLoggedIn && <p>{currentUser?.email}</p>}
+                    {isLoggedIn ? <>
+                        <button className="logout-btn" onClick={() => {
+                            logout()
+                            isLoggedIn = false
+                        }}>Logout</button>
+                    </> : <Link to='/auth' className="nav-btn-link">Sign in</Link>}
                 </div>
             </nav>
         </div>

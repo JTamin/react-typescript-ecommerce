@@ -2,7 +2,6 @@ import { useCartContext } from "../context/cartContext"
 
 const Cart = () => {
     const { cart, itemQuantity, increase, decrease, deleteItem, totalCart, itemTotalPrice } = useCartContext()
-    console.log(totalCart)
     return (
         <div className="checkout-container">
             <div className="checkout-grid">
@@ -41,9 +40,8 @@ const Cart = () => {
                     <h2 className="summary-title">Order Summary</h2>
                     <p className="summary-subtotal">Subtotal: ${totalCart()}</p>
                     <p className="summary-total">Total: ${totalCart()}</p>
-                    <button className="checkout-btn" onClick={() => alert('success')}>Checkout</button>
+                    <button className="checkout-btn" disabled={cart.length === 0} onClick={() => alert('success')}>Checkout</button>
                 </div>
-
             </div>
         </div>
     )

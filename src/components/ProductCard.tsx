@@ -13,14 +13,13 @@ type ProductCardProps = {
 }
 
 const ProductCard = ({ item }: ProductCardProps) => {
-    const { add, itemQuantity, totalCart } = useCartContext();
+    const { add, itemQuantity } = useCartContext();
 
     const handleAdd = (e: MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
         add(item);
     }
     return (
-
         <div key={item?.id} className='product-card'>
             <div className='product-image-container'>
                 <img src={item?.images?.[0]} className='product-image' alt={item?.title} />

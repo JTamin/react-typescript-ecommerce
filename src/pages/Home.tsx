@@ -13,7 +13,7 @@ type ProductResponse = {
 
 const Home = () => {
 
-    const { data, error, loading } = useFetch<ProductResponse>('https://dummyjson.com/products')
+    const { data, error, loading } = useFetch<ProductResponse>('https://dummyjson.com/products?limit=12')
 
     if (loading) return <h1>Loading...</h1>
     if (error) return <h1>Error</h1>
