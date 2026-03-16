@@ -8,13 +8,13 @@ type Product = {
     price: number,
     images: string[],
     description: string,
-
 }
 
 const ProductDetails = () => {
     const params = useParams();
     const { add, increase, decrease, itemQuantity } = useCartContext();
     const { data, loading, error } = useFetch<Product>(`https://dummyjson.com/products/${params.id}`);
+
 
     if (loading) return <h1>Loading...</h1>
     if (error) return <h1>Error</h1>
@@ -27,7 +27,7 @@ const ProductDetails = () => {
             <div className="quantity-control">
                 <button className="quantity-btn" onClick={() => decrease(data?.id!)}>-</button>
                 <span className="quantity-value">{itemQuantity(data?.id!)}</span>
-                <button className="quantity-btn" onClick={() => increase(data?.id!)}>+</button>
+                <button className="quantity-btn" onClick={() => increase(data?.id!)} disabled={itemQuantity(data?.id!) === 0 ? true : false}>+</button>
                 <button className="add-btn" onClick={() => add(data!)}>Add to cart</button>
             </div>
         </div>

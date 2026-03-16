@@ -413,7 +413,8 @@
   background-color: #224ec9;
   /* transform: scale(1.05); */
 }
-.checkout-btn:disabled {
+.checkout-btn:disabled,
+.quantity-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }

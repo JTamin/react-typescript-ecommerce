@@ -37,7 +37,7 @@ const Auth = () => {
             return
         }
         if (!user) {
-            console.log('no user')
+            setAuthMessage('no user')
             return
         }
         const hasAccount = user.find(item => item.email === email && item.password === password)
@@ -49,7 +49,6 @@ const Auth = () => {
             email: hasAccount?.email,
             password: hasAccount?.password
         }
-        setAuthStatus(true)
         getCurrentUser(currentUser);
         navigate('/')
     }
