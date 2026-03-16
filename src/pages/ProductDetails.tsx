@@ -12,7 +12,7 @@ type Product = {
 
 const ProductDetails = () => {
     const params = useParams();
-    const { add, increase, decrease, itemQuantity, cart } = useCartContext();
+    const { add, increase, decrease, itemQuantity } = useCartContext();
     const { data, loading, error } = useFetch<Product>(`https://dummyjson.com/products/${params.id}`);
 
 
