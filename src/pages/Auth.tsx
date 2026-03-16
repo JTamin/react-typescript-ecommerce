@@ -97,17 +97,13 @@ const Auth = () => {
                         />
                         {errors.password?.message && <p style={{ color: "red" }}>{errors.password.message}</p>}
                     </div>
-
                     <button className="auth-button" type="submit">
                         {authStatus ? 'Login' : 'Signup'}
                     </button>
-
                 </form>
-
                 <p className="auth-footer" onClick={() => setAuthStatus(prev => !prev)}>
                     Don't have an account? <span className="auth-link">Register</span>
                 </p>
-
             </div>
         </div>
     );

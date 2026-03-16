@@ -106,7 +106,7 @@
   border: none;
   color: white;
   height: 40px;
-  width: 10vw;
+  width: 11vw;
   font-size: 1.6vw;
 }
 .product-cta-container {
@@ -129,7 +129,7 @@
   align-items: center;
   justify-content: center;
   font-size: 1.6vw;
-  width: 10vw;
+  width: 11vw;
   color: white;
   background: rgb(80, 80, 80);
 }
@@ -277,6 +277,8 @@
   gap: 0.5vw;
   background: white;
   padding: 5vw;
+  height: 50vw;
+  overflow-y: scroll;
 }
 
 .checkout-no-item-tx {
