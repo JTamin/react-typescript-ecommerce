@@ -15,7 +15,6 @@ type authContextType = {
     currentUser: User | null,
     getCurrentUser: (currentUser: User) => void,
     logout: () => void,
-
 }
 const AuthContext = createContext<authContextType | null>(null);
 export const AuthProvider = ({ children }: AuhProviderProps) => {
@@ -24,7 +23,6 @@ export const AuthProvider = ({ children }: AuhProviderProps) => {
         const hasUser = localStorage.getItem("user");
         return hasUser ? JSON.parse(hasUser) : []
     })
-
     const [currentUser, setCurrentUser] = useState<User | null>(() => {
         const stored = localStorage.getItem("currentUser");
         return stored ? JSON.parse(stored) : null;

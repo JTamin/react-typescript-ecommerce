@@ -24,6 +24,7 @@ type CartContextType = {
     itemQuantity: (id: number) => number,
     totalCart: () => number,
     itemTotalPrice: (id: number) => number,
+    clearCart: () => void,
 
 }
 
@@ -89,6 +90,9 @@ export const CartProvider = ({ children }: CartProviderProps) => {
             const total = cart.filter(item => item.id === id).reduce((curr, total) => curr + total.price * total.quantity, 0);
             return Number(total.toFixed(2))
         }, [cart])
+    const clearCart = useCallback(() => {
+        setCart([])
+    }, [cart])
 
     const value = useMemo(() => ({
         cart,
@@ -99,6 +103,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         itemTotalPrice,
         itemQuantity,
         totalCart,
+        clearCart
     }), [cart])
 
 
